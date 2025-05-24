@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueStar - Agência Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bluestar-gradient-start: #0f1c2b;
+            --bluestar-gradient-end: #007bff;
+            --bluestar-text-color: #f0f0f0;
+            --bluestar-button-start: #007bff;
+            --bluestar-button-end: #00c7ff;
+            --bluestar-button-hover: #0056b3;
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--bluestar-gradient-start);
+        }
+
+        /* Cabeçalho da Agência */
+        .top-agency-name {
+            background-color: #0f1c2b;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            text-align: left;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+        }
+
+        /* Seção do Banner no Topo */
+        .banner-top-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner-top-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Primeira Página (Hero Section) */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bluestar-gradient-start), var(--bluestar-gradient-end));
+            color: var(--bluestar-text-color);
+            padding: 80px 20px;
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 123, 255, 0.3) 0%, rgba(0, 123, 255, 0) 50%),
+                        radial-gradient(circle at 90% 80%, rgba(0, 199, 255, 0.3) 0%, rgba(0, 199, 255, 0) 50%);
+            filter: blur(80px);
+            z-index: 1;
+        }
+
+        .hero-content-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .hero-content-inner h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: white;
+        }
+
+        .hero-content-inner p {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            color: var(--bluestar-text-color);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--bluestar-button-start), var(--bluestar-button-end));
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--bluestar-button-hover);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: #0f1c2b;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .top-agency-name {
+                text-align: center;
+            }
+            .banner-top-section img {
+                max-width: 100%;
+            }
+            .hero-section {
+                min-height: 50vh;
+                padding: 60px 20px;
+            }
+            .hero-content-inner h1 {
+                font-size: 2.5em;
+            }
+            .hero-content-inner p {
+                font-size: 1.2em;
+            }
+            .btn-primary {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 40vh;
+                padding: 40px 15px;
+            }
+            .hero-content-inner h1 {
+                font-size: 1.8em;
+            }
+            .hero-content-inner p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-agency-name">
+        AGÊNCIA BLUE STAR
+    </div>
+
+    <section class="hero-section">
+        <div class="background-overlay"></div>
+        <div class="hero-content-inner">
+            <div class="banner-top-section">
+                <img src="91_Sem_Titulo_20250506144358-1.png" alt="Banner da BlueStar">
+            </div>
+            <h1>BlueStar - Seu site favorito!</h1>
+            <p>Compre, venda e divulgue</p>
+            <a href="segunda-pagina.html" class="btn-primary">INICIAR EXPERIÊNCIA</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 BlueStar Agência Digital. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

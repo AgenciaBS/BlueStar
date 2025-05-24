@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueStar - Explorar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variáveis CSS para manter a consistência de cores */
+        :root {
+            --bluestar-gradient-start: #0f1c2b;
+            --bluestar-gradient-end: #007bff;
+            --bluestar-text-color: #f0f0f0;
+            --bluestar-button-start: #007bff;
+            --bluestar-button-end: #00c7ff;
+            --bluestar-button-hover: #0056b3;
+            --bluestar-light-bg: #e6f3ff;
+            --bluestar-dark-text: #333;
+            /* Novas variáveis para o fundo do cartão, inspiradas na imagem do cartão azul */
+            --card-background-start: #0088ff; /* Um azul vibrante */
+            --card-background-end: #00bfff;   /* Um azul mais claro */
+            --card-text-color: white; /* Texto branco */
+            --card-border-color: rgba(255, 255, 255, 0.4); /* Borda sutil */
+
+            /* Variáveis para o novo botão "Entrar" */
+            --button-enter-bg-start: #fff; /* Branco para o fundo */
+            --button-enter-bg-end: #e0e0e0; /* Um cinza claro para o gradiente */
+            --button-enter-text-color: #007bff; /* Cor do texto azul da BlueStar */
+            --button-enter-hover-bg: #f0f0f0; /* Fundo hover mais escuro */
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--bluestar-gradient-start), var(--bluestar-gradient-end));
+            color: var(--bluestar-text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Cabeçalho da Agência */
+        .top-agency-name {
+            background-color: #0f1c2b;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            text-align: left;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+        }
+
+        /* Seção principal de conteúdo da segunda página */
+        .main-content-page {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .content-container {
+            max-width: 900px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--bluestar-dark-text);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            color: var(--bluestar-gradient-end);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+        }
+
+        /* Estilo para o bloco retangular (o cartão principal) */
+        .retangle-block {
+            background: linear-gradient(135deg, var(--card-background-start), var(--card-background-end)); /* Gradiente azul */
+            color: var(--card-text-color);
+            margin: 40px auto;
+            padding: 15px; /* Padding interno para o conteúdo */
+            border-radius: 15px; /* Cantos arredondados */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2); /* Sombra e brilho interno */
+            max-width: 600px; /* Largura máxima para telas maiores */
+            width: 90%;
+            display: flex; /* ATIVAR FLEXBOX para layout "deitado" */
+            flex-direction: row; /* Elementos lado a lado por padrão em telas maiores */
+            align-items: center; /* Centraliza verticalmente a imagem e o grupo de texto */
+            text-align: left;
+            overflow: hidden; /* Esconde qualquer transbordamento, especialmente da imagem */
+            border: 1px solid var(--card-border-color); /* Borda sutil */
+            position: relative;
+            min-height: 150px; /* Garante uma altura mínima para o card */
+        }
+
+        /* Contêiner da imagem no bloco */
+        .retangle-block-image-container {
+            flex-shrink: 0; /* Impede que a imagem encolha */
+            width: 120px; /* Largura da imagem */
+            height: 120px; /* Altura da imagem */
+            margin-right: 20px; /* Espaço entre imagem e texto */
+            border-radius: 50%; /* Imagem redonda */
+            overflow: hidden; /* Garante que a imagem seja cortada em círculo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.2); /* Fundo sutil atrás da imagem */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.2); /* Sombra/brilho para o círculo da imagem */
+            border: 2px solid rgba(255, 255, 255, 0.6); /* Borda branca na imagem */
+        }
+
+        /* Estilo para a imagem dentro do contêiner */
+        .retangle-block-image-container img {
+            width: 100%; /* A imagem preenche o contêiner */
+            height: 100%;
+            object-fit: contain; /* Ajusta a imagem para caber no contêiner sem cortar */
+            display: block;
+        }
+
+        /* Contêiner para o texto (título, descrição e botão) */
+        .retangle-block-text {
+            flex-grow: 1; /* Permite que o texto ocupe o espaço restante */
+            display: flex;
+            flex-direction: column; /* Título, descrição e botão um abaixo do outro */
+            justify-content: center; /* Centraliza verticalmente o conteúdo à direita */
+        }
+
+        .retangle-block-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em; /* Título maior */
+            color: var(--card-text-color);
+            margin-bottom: 5px; /* Espaço entre título e linha */
+            text-align: left;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para o texto do título */
+        }
+
+        .retangle-block-text p {
+            font-size: 1.2em;
+            margin-bottom: 15px; /* Espaço entre descrição e botão */
+            text-align: left;
+            color: rgba(255, 255, 255, 0.85); /* Cor da descrição um pouco mais escura */
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Sombra sutil para a descrição */
+        }
+
+        /* Linha decorativa abaixo do título */
+        .title-underline {
+            width: 80px; /* Largura da linha */
+            height: 3px; /* Espessura da linha */
+            background-color: rgba(255, 255, 255, 0.7); /* Cor branca semitransparente */
+            margin: 5px 0 10px 0; /* Espaço abaixo da linha e acima da descrição */
+            border-radius: 2px;
+            display: block; /* Garante que é um bloco para aplicar margin */
+        }
+
+        /* Estilo para o novo botão "Entrar" dentro do bloco */
+        .btn-enter {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--button-enter-bg-start), var(--button-enter-bg-end));
+            color: var(--button-enter-text-color);
+            padding: 10px 20px;
+            border-radius: 50px; /* Botão com cantos arredondados */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.0em;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+            width: fit-content; /* O botão se ajusta ao conteúdo */
+        }
+
+        .btn-enter:hover {
+            background: var(--button-enter-hover-bg);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botão "Voltar para a Página Inicial" */
+        .btn-back {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--bluestar-button-start), var(--bluestar-button-end));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 25px;
+        }
+
+        .btn-back:hover {
+            background: var(--bluestar-button-hover);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: #0f1c2b;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Responsividade para a segunda página */
+        @media (max-width: 768px) {
+            .top-agency-name {
+                text-align: center;
+            }
+            .content-container {
+                padding: 30px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+                margin-bottom: 15px;
+            }
+            .retangle-block {
+                flex-direction: column; /* Pilha vertical em telas menores */
+                padding: 20px;
+                margin: 30px auto;
+                min-height: auto; /* Remove altura mínima em mobile */
+            }
+            .retangle-block-image-container {
+                width: 100px; /* Tamanho da imagem em mobile */
+                height: 100px;
+                margin-right: 0; /* Remove margem lateral */
+                margin-bottom: 15px; /* Espaço abaixo da imagem */
+            }
+            .retangle-block-text {
+                align-items: center; /* Centraliza o texto verticalmente */
+                text-align: center; /* Centraliza o texto */
+            }
+            .retangle-block-text h3, .retangle-block-text p {
+                text-align: center; /* Garante que o texto esteja centralizado */
+            }
+            .retangle-block-text h3 {
+                font-size: 1.8em;
+            }
+            .retangle-block-text p {
+                font-size: 1.1em;
+            }
+            .title-underline {
+                margin: 5px auto 10px auto; /* Centraliza a linha em mobile */
+            }
+            .btn-enter {
+                padding: 8px 18px;
+                font-size: 0.9em;
+            }
+            .btn-back {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            p {
+                font-size: 0.95em;
+                margin-bottom: 10px;
+            }
+            .retangle-block {
+                padding: 15px;
+                margin: 20px auto;
+            }
+            .retangle-block-image-container {
+                width: 80px;
+                height: 80px;
+            }
+            .retangle-block-text h3 {
+                font-size: 1.5em;
+            }
+            .retangle-block-text p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-agency-name">
+        AGÊNCIA BLUE STAR
+    </div>
+
+    <section class="main-content-page">
+        <div class="content-container">
+            <h1>BlueStar - Explorar</h1>
+            <p>Explore lojas, servidores, anúncios e muito mais!</p>
+
+            <div class="retangle-block">
+                <div class="retangle-block-image-container">
+                    <img src="92 Sem Título_20250119125405.png" alt="Logo da BlueStar">
+                </div>
+                <div class="retangle-block-text">
+                    <h3>BlueStar</h3>
+                    <div class="title-underline"></div>
+                    <p>Somos uma agência destinada a ajudar as pessoas a divulgar seu trabalho, rede social, grupo e muito mais. Fazemos atividades remuneradas e oferecemos vagas para afiliação da nossa e outras lojas.</p>
+                    <a href="https://wa.me/5571993371669?text=Ativar%20atendimento%20" class="btn-enter">Entrar</a>
+                </div>
+            </div>
+
+            <a href="BlueStar.html" class="btn-back">Voltar para a Página Inicial</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 BlueStar Agência Digital. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
