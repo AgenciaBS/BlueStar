@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueStar - Agência Digital</title>
+    <title>BlueStar - Agência de Divulgação e Oportunidades Discord</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
+        /* Variáveis CSS para manter a consistência de cores */
         :root {
-            --bluestar-gradient-start: #0f1c2b;
-            --bluestar-gradient-end: #007bff;
-            --bluestar-text-color: #f0f0f0;
-            --bluestar-button-start: #007bff;
-            --bluestar-button-end: #00c7ff;
-            --bluestar-button-hover: #0056b3;
+            --bluestar-gradient-start: #0f1c2b; /* Azul escuro quase preto */
+            --bluestar-gradient-end: #007bff;   /* Azul vibrante */
+            --bluestar-text-color: #f0f0f0;    /* Branco off-white para texto */
+            --bluestar-button-start: #007bff;  /* Azul do botão */
+            --bluestar-button-end: #00c7ff;    /* Azul mais claro para gradiente do botão */
+            --bluestar-button-hover: #0056b3;  /* Azul mais escuro para hover */
+            --bluestar-light-bg: #e6f3ff;      /* Fundo muito claro, quase branco */
+            --bluestar-dark-text: #333;        /* Texto escuro para fundos claros */
+            --card-bg-light: rgba(255, 255, 255, 0.95); /* Fundo claro para cartões */
+            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para cartões */
+            --section-title-color: #007bff; /* Cor para títulos de seção */
+            --feature-icon-color: #007bff; /* Cor dos ícones de features */
+
+            /* Nova variável para o botão flutuante de chat */
+            --chat-button-bg: #25D366; /* Verde do WhatsApp */
+            --chat-button-hover-bg: #1DA851;
+            --chat-button-text: white;
         }
 
         /* Reset básico */
@@ -27,10 +40,14 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            color: #333;
             line-height: 1.6;
+            background: linear-gradient(135deg, var(--bluestar-gradient-start), var(--bluestar-gradient-end));
+            color: var(--bluestar-text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
             overflow-x: hidden;
-            background-color: var(--bluestar-gradient-start);
+            scroll-behavior: smooth; /* Rolagem suave para âncoras */
         }
 
         /* Cabeçalho da Agência */
@@ -41,158 +58,495 @@
             text-align: left;
             font-size: 1.1em;
             letter-spacing: 2px;
+            width: 100%;
+            z-index: 1000; /* Garante que fique acima de outros elementos */
         }
 
-        /* Seção do Banner no Topo */
-        .banner-top-section {
-            width: 100%;
+        /* Navegação (Header) */
+        header {
+            background-color: rgba(15, 28, 43, 0.95); /* Um pouco transparente */
+            padding: 15px 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-        }
-
-        .banner-top-section img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Primeira Página (Hero Section) */
-        .hero-section {
-            position: relative;
-            width: 100%;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--bluestar-gradient-start), var(--bluestar-gradient-end));
-            color: var(--bluestar-text-color);
-            padding: 80px 20px;
-        }
-
-        .background-overlay {
-            position: absolute;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: sticky; /* Fica fixo ao rolar */
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(0, 123, 255, 0.3) 0%, rgba(0, 123, 255, 0) 50%),
-                        radial-gradient(circle at 90% 80%, rgba(0, 199, 255, 0.3) 0%, rgba(0, 199, 255, 0) 50%);
-            filter: blur(80px);
-            z-index: 1;
+            z-index: 999;
         }
 
-        .hero-content-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            width: 90%;
-            text-align: center;
-        }
-
-        .hero-content-inner h1 {
+        .header-logo {
+            display: flex;
+            align-items: center;
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5em;
+            font-size: 1.8em;
             font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
             color: white;
+            text-decoration: none;
         }
 
-        .hero-content-inner p {
-            font-size: 1.4em;
-            margin-bottom: 30px;
-            color: var(--bluestar-text-color);
+        .header-logo img {
+            height: 40px; /* Tamanho do logo */
+            margin-right: 10px;
         }
 
-        .btn-primary {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--bluestar-button-start), var(--bluestar-button-end));
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
             color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1em;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-size: 1.05em;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative; /* Para o underline */
         }
 
-        .btn-primary:hover {
-            background: var(--bluestar-button-hover);
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--bluestar-button-end);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--bluestar-button-end);
             transform: translateY(-2px);
         }
 
+        /* Hero Section (Seção Principal) */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--bluestar-gradient-start), var(--bluestar-gradient-end));
+            color: var(--bluestar-text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 120px); /* Ajusta para preencher a tela */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before { /* Efeito de fundo com estrela */
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 60% 30%, rgba(0, 123, 255, 0.2) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(0, 199, 255, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 90%, rgba(15, 28, 43, 0.3) 0%, transparent 40%);
+            animation: backgroundPan 30s ease infinite;
+            z-index: 0;
+        }
+
+        @keyframes backgroundPan {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-10%, 10%); }
+            50% { transform: translate(10%, -10%); }
+            75% { transform: translate(-10%, 10%); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.8em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-buttons .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--bluestar-button-start), var(--bluestar-button-end));
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15em;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+            border: none; /* Remove a borda padrão do botão */
+        }
+
+        .cta-buttons .btn:hover {
+            background: var(--bluestar-button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .cta-buttons .btn-secondary {
+            background: none;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+
+        .cta-buttons .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Seção de Serviços */
+        .services-section, .contact-section {
+            background-color: var(--card-bg-light);
+            color: var(--bluestar-dark-text);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .services-section h2, .contact-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            color: var(--section-title-color);
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--bluestar-button-start); /* Linha de destaque */
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card .icon {
+            font-size: 3em; /* Tamanho maior para ícones */
+            color: var(--feature-icon-color);
+            margin-bottom: 15px;
+            display: block; /* Garante que o ícone fique na sua própria linha */
+        }
+
+        .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: var(--bluestar-dark-text);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 0; /* Remover margem extra do último p */
+        }
+
+        /* Seção de Chamada para Ação (Call to Action) - Explorar */
+        .cta-explore {
+            background: linear-gradient(90deg, #0f1c2b, #0056b3); /* Gradiente mais escuro */
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 50px; /* Espaço acima da seção */
+        }
+
+        .cta-explore h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-explore p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Seção de Contato - Focada apenas no WhatsApp */
+        .contact-section .contact-whatsapp-btn {
+            display: inline-block;
+            background: var(--chat-button-bg); /* Cor do WhatsApp */
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15em;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 20px auto; /* Centraliza e adiciona margem */
+            border: none;
+        }
+
+        .contact-section .contact-whatsapp-btn:hover {
+            background: var(--chat-button-hover-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* Botão de Chat Flutuante */
+        .chat-float-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--chat-button-bg);
+            color: var(--chat-button-text);
+            border-radius: 50%; /* Faz o botão ser redondo */
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8em;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000; /* Garante que fique acima de outros elementos */
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, animation 0.8s ease-in-out infinite; /* Adicionado animation */
+            animation: pulse 1.5s infinite; /* Adiciona a animação de pulsação */
+        }
+
+        .chat-float-button:hover {
+            background-color: var(--chat-button-hover-bg);
+            transform: scale(1.08); /* Aumenta um pouco no hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            animation: none; /* Para a animação de pulsação no hover */
+        }
+
+        /* Animação de pulsação para o botão flutuante */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+
+        /* Rodapé */
         footer {
             background-color: #0f1c2b;
             color: rgba(255, 255, 255, 0.7);
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
             font-size: 0.9em;
             width: 100%;
             margin-top: auto;
         }
 
+        footer p {
+            margin: 0;
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
-            .top-agency-name {
-                text-align: center;
+            .header-logo {
+                font-size: 1.5em;
             }
-            .banner-top-section img {
-                max-width: 100%;
+            .header-logo img {
+                height: 30px;
             }
-            .hero-section {
-                min-height: 50vh;
-                padding: 60px 20px;
+            nav ul {
+                display: none; /* Oculta o menu de navegação em telas pequenas, faremos um menu hambúrguer mais tarde se necessário */
             }
-            .hero-content-inner h1 {
-                font-size: 2.5em;
+            .hero {
+                padding: 60px 15px;
             }
-            .hero-content-inner p {
-                font-size: 1.2em;
+            .hero h1 {
+                font-size: 2.8em;
             }
-            .btn-primary {
+            .hero p {
+                font-size: 1.1em;
+            }
+            .cta-buttons .btn {
                 padding: 12px 25px;
                 font-size: 1em;
+                margin: 8px;
+            }
+            .services-section, .contact-section, .cta-explore {
+                padding: 40px 15px;
+            }
+            .services-section h2, .contact-section h2 {
+                font-size: 2.2em;
+                margin-bottom: 30px;
+            }
+            .service-card {
+                padding: 25px;
+            }
+            .service-card h3 {
+                font-size: 1.5em;
+            }
+            .service-card .icon {
+                font-size: 2.5em;
+            }
+            .cta-explore h2 {
+                font-size: 2em;
+            }
+            .cta-explore p {
+                font-size: 1em;
+            }
+            .chat-float-button {
+                width: 50px; /* Reduz tamanho em mobile */
+                height: 50px;
+                font-size: 1.5em;
+                bottom: 20px;
+                right: 20px;
             }
         }
 
         @media (max-width: 480px) {
-            .hero-section {
-                min-height: 40vh;
-                padding: 40px 15px;
+            .top-agency-name {
+                font-size: 0.9em;
+                padding: 8px 10px;
             }
-            .hero-content-inner h1 {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .cta-buttons .btn {
+                display: block; /* Botões em pilha em telas muito pequenas */
+                width: 90%;
+                margin: 10px auto;
+            }
+            .services-section h2, .contact-section h2 {
                 font-size: 1.8em;
             }
-            .hero-content-inner p {
-                font-size: 1em;
+            .service-card h3 {
+                font-size: 1.3em;
+            }
+            .service-card p {
+                font-size: 0.9em;
             }
         }
     </style>
 </head>
 <body>
-
     <div class="top-agency-name">
         AGÊNCIA BLUE STAR
     </div>
 
-    <section class="hero-section">
-        <div class="background-overlay"></div>
-        <div class="hero-content-inner">
-            <div class="banner-top-section">
-                <img src="91_Sem_Titulo_20250506144358-1.png" alt="Banner da BlueStar">
+    <header>
+        <a href="index.html" class="header-logo">
+            <img src="92 Sem Título_20250119125405.png" alt="Logo BlueStar">
+            BlueStar
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="segunda-pagina.html">Explorar</a></li> <li><a href="#contato">Suporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Sua Presença no Discord em Destaque!</h1>
+            <p>A BlueStar é a agência parceira de servidores Discord, freelancers e lojas, focada em impulsionar sua divulgação e oferecer oportunidades lucrativas. Transforme seu potencial em resultados reais!</p>
+            <div class="cta-buttons">
+                <a href="segunda-pagina.html" class="btn">Explorar</a>
+                <a href="#contato" class="btn btn-secondary">Fale Conosco</a>
             </div>
-            <h1>BlueStar - Seu site favorito!</h1>
-            <p>Compre, venda e divulgue</p>
-            <a href="segunda-pagina.html" class="btn-primary">INICIAR EXPERIÊNCIA</a>
         </div>
+    </section>
+
+    <section id="servicos" class="services-section">
+        <h2>Nossos Serviços Para Você</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="icon">🚀</span>
+                <h3>Divulgação de Servidores Discord</h3>
+                <p>Aumente a visibilidade e o número de membros do seu servidor. Criamos estratégias personalizadas para alcançar o público certo e fazer sua comunidade crescer.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="icon">💰</span>
+                <h3>Oportunidades de Ganhos</h3>
+                <p>Oferecemos diversas maneiras de você monetizar seu tempo e suas habilidades, incluindo afiliação a lojas e trabalhos remunerados. Comece a lucrar!</p>
+            </div>
+
+            <div class="service-card">
+                <span class="icon">🤝</span>
+                <h3>Afiliação e Vagas de Trabalho</h3>
+                <p>Conectamos você a lojas parceiras para afiliação e disponibilizamos vagas de trabalho exclusivas para membros da nossa comunidade.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="icon">🎨</span>
+                <h3>Divulgação Freelancer</h3>
+                <p>É um designer, programador, editor de vídeo? Divulgue seu trabalho freelancer para nossa rede e encontre novos clientes para seus serviços.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="explorar" class="cta-explore">
+        <h2>Pronto para Expandir Suas Conexões?</h2>
+        <p>Acesse nossa plataforma para descobrir servidores parceiros, lojas com programas de afiliação e as últimas vagas de trabalho no universo Discord.</p>
+        </section>
+
+    <section id="contato" class="contact-section">
+        <h2>Fale Conosco</h2>
+        <p>Tem dúvidas, sugestões ou quer saber mais sobre como a BlueStar pode te ajudar? **Fale diretamente com nossa equipe de suporte pelo WhatsApp!**</p>
+        <a href="https://wa.me/5571993371669?text=Ativar%20atendimento%20" class="contact-whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Atendimento via WhatsApp
+        </a>
     </section>
 
     <footer>
         <p>&copy; 2025 BlueStar Agência Digital. Todos os direitos reservados.</p>
     </footer>
+
+    <a href="https://wa.me/5571993371669?text=Ativar%20atendimento%20" class="chat-float-button" aria-label="Abrir Chat no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
